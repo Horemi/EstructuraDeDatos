@@ -1,0 +1,45 @@
+Cabecera
+#pragma once
+using namespace std;
+
+class operacion
+{
+private:
+
+	//datos
+	float a, b, suma;
+
+public:
+	//constructor, igual que el programa - metodos
+	operacion();
+	void calculaSuma();
+};
+
+.cpp
+#include "operacion.h"
+#include <iostream>
+
+using namespace std;
+// constructor, igual que el programa - metodos
+
+operacion::operacion() {
+	a = 4;
+	b = 5.3;
+}
+void operacion::calculaSuma() {
+	suma = a + b;
+	cout << "La suma es: " << suma;
+}
+
+Main del programa
+#include <iostream>
+#include "operacion.h"
+
+using namespace std;
+
+
+int main()
+{
+    operacion suman;
+    suman.calculaSuma();
+}
