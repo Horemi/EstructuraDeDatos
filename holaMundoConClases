@@ -1,0 +1,46 @@
+Cabecera de la clase
+#pragma once
+#include <string>
+using namespace std;
+
+
+class hola
+{
+private:
+
+	//datos
+	string mens;
+public:
+//constructor, igual que el programa - metodos
+	hola();
+	void mostrar();
+
+};
+
+Implementacion de la clase
+#include "hola.h"
+#include <iostream>
+
+using namespace std;
+
+// constructor, igual que el programa - metodos
+hola::hola() {
+	mens = "Soy Horemi";
+}
+void hola::mostrar() {
+	cout << "El mensaje es: " << hola::mens;
+}
+
+main del programa
+#include <iostream>
+#include "hola.h"
+
+using namespace std;
+
+int main()
+{
+    hola mensajito;
+   
+    mensajito.mostrar();
+
+}
