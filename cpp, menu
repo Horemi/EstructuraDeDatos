@@ -1,0 +1,65 @@
+#include <iostream>
+#include "Rectangulo.h"
+#include "Pala.h"
+#include "Cuadrado.h"
+using namespace std;
+
+int main()
+{
+	int opcion;
+	float baseRec, alturaRec;
+	float basePale, alturaPale;
+	float Lado;
+	do {
+		cout << "AREA DE FIGURAS" << endl;
+		cout << "1. Area de un Rectangulo " << endl;
+		cout << "2. Area de un Paralelogramo " << endl;
+		cout << "3. Area de un Cuadrado " << endl;
+		cout << "0.Salir " << endl;
+		cout << "Elige una opcion: " << opcion;
+
+		switch (opcion)
+            case 1:
+				do {
+					cout << "Ingrese la altura: ";
+					cin >> alturaRec;
+				} while (alturaRec < 1);
+				do {
+					cout << "Ingrese la base: ";
+					cin >> baseRec;
+				} while (baseRec < 1);
+
+				Rectangulo Rec;
+				Rec.set_altura(alturaRec);
+				Rec.set_base(baseRec);
+				cout << "El Area del Triangulo es: " << Rec.area() << endl;
+				break;
+
+			case 2:
+				do {
+					cout << "Ingrese la altura: ";
+					cin >> alturaPale;
+				} while (alturaPale < 1);
+				do {
+					cout << "Ingrese la base: ";
+					cin >> basePale;
+				} while (basePale < 1);
+
+				Paralelogramo Pale;
+				Pale.set_altura(alturaPale);
+				Pale.set_base(basePale);
+				cout << "El Area del Triangulo es: " << Pale.area() << endl;
+				break;
+			case 3:
+				do {
+					cout << "Ingrese Lado: ";
+					cin >> Lado;
+				} while (Lado < 1);
+
+				Cuadrado Cuadri;
+				Rec.set_altura(alturaPale);
+				Rec.set_base(basePale);
+				cout << "El Area del Triangulo es: " << Pale.area() << endl;
+				break;
+	}
+}
