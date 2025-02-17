@@ -1,0 +1,289 @@
+//main cpp
+#include <iostream>
+#include "math.h"
+#include "Paralelogramo.h"
+#include "Circulo.h"
+#include "Cuadrado.h"
+#include "Cilindro.h"
+#include "Esfera.h"
+
+using namespace std;
+
+int main() {
+
+    // Declarar los objetos fuera del switch-case para evitar errores de alcance
+
+    Paralelogramo Paralelogramito;
+    Circulo Circulito;
+    Cuadrado Cuadradito;
+    Cilindro Cilindrito;
+    Esfera Esferita;
+
+    double base, altura, radio, lado;
+    int opcion;
+
+    do {
+        cout << "\nMenu de Figuras." << endl;
+        cout << "1. Calcular el area de un PARALELOGRAMO." << endl;
+        cout << "2. Calcular el area de un CIRCULO." << endl; 
+        cout << "3. Calcular el area de un CUADRADO." << endl;
+        cout << "4. Calcular el volumen de un CILINDRO." << endl;
+        cout << "5. Calcular el area de un ESFERA." << endl;
+        cout << "0. Salir." << endl;
+        cout << "Por favor, ingresar la opcion que desee seleccionar: ";
+        cin >> opcion;
+
+        switch (opcion) {
+        case 1:
+            cout << "\nIngresar los valores del paralelogramo." << endl;
+            do {
+                cout << "Base: ";
+                cin >> base;
+                if (base < 0) cout << "ERROR. Ingrese un valor mayor o igual a 0." << endl;
+            } while (base < 0);
+
+            do {
+                cout << "Altura: ";
+                cin >> altura;
+                if (altura < 0) cout << "ERROR. Ingrese un valor mayor o igual a 0." << endl;
+            } while (altura < 0);
+
+            Paralelogramito.set_basePa(base);
+            Paralelogramito.set_alturaPa(altura);
+            cout << "El area del paralelogramo es: " << Paralelogramito.areaPa() << endl;
+            break;
+
+        case 2:
+            cout << "\nIngresar los valores del circulo." << endl;
+            do {
+                cout << "Radio: ";
+                cin >> radio;
+                if (radio < 0) cout << "ERROR. Ingrese un valor mayor o igual a 0." << endl;
+            } while (radio < 0);
+
+            Circulito.set_radioC(radio);
+
+            cout << "El area del circulo es: " << Circulito.AreaCirculo() << endl;
+            break;
+
+        case 3:
+            cout << "\nIngresar el valor del lado del cuadrado." << endl;
+            do {
+                cout << "Lado: ";
+                cin >> lado;
+                if (lado < 0) cout << "ERROR. Ingrese un valor mayor o igual a 0." << endl;
+            } while (lado < 0);
+
+            Cuadradito.set_ladoCuadrado(lado);
+            cout << "El area del cuadrado es: " << Cuadradito.AreaCuadrado() << endl;
+            break;
+
+        case 4:
+            cout << "\nIngresar el valor del radio del cilindro." << endl;
+            do {
+                cout << "Radio: ";
+                cin >> radio;
+                if (radio < 0) cout << "ERROR. Ingrese un valor mayor o igual a 0." << endl;
+            } while (radio < 0);
+
+            do {
+                cout << "Altura: ";
+                cin >> altura;
+                if (altura < 0) cout << "ERROR. Ingrese un valor mayor o igual a 0." << endl;
+            } while (altura < 0);
+
+            Cilindrito.set_radioCilindro(radio);
+            Cilindrito.set_alturaCilindro(altura);
+            cout << "El volumen del cilindro es: " << Cilindrito.calcularVolumenCilindro() << endl;
+            break;
+
+        case 5:
+            cout << "\nIngresar los valores de la esfera." << endl;
+            do {
+                cout << "Radio: ";
+                cin >> radio;
+                if (radio < 0) cout << "ERROR. Ingrese un valor mayor o igual a 0." << endl;
+            } while (radio < 0);
+
+            Esferita.set_radio(radio);
+
+            cout << "El area de la esfera es: " << Esferita.AreaEsfera() << endl;
+            break;
+
+        case 0:
+            cout << "Saliendo del programa..." << endl;
+            break;
+
+        default:
+            cout << "ERROR. Opción inválida, ingrese un número válido del menú." << endl;
+            break;
+        }
+    } while (opcion != 0);
+
+    return 0;
+}
+
+//Circulo.h
+#pragma once 
+class Circulo {
+private:
+	float radioCirculo; //Creamos el atributo
+public:
+	Circulo();
+	void set_radioC(float _radioCirculo); //Definimos el setter 
+	float get_radioC(); //Definimos la funcion que envia el radio al main
+	double AreaCirculo(); //Funcion que calculo el area del circulo
+
+};
+
+//Circlo.cpp
+#include "Circulo.h"
+#include "math.h"
+Circulo::Circulo() {
+
+}
+
+void Circulo::set_radioC(float _radioCirculo) {
+	radioCirculo = _radioCirculo; //El atributo adquiere valor nuevo
+}
+float Circulo::get_radioC() {
+	return radioCirculo; //retorna el valor del radio
+}
+double Circulo::AreaCirculo() {
+	return (pow(radioCirculo, 2) * 3.1415); //retorna el valor del Area
+}
+
+//Esfera.h
+class Esfera
+{
+private:
+	float radioEsfera;
+public:
+	Esfera();
+	float get_radio();
+	void set_radio(float _radio);
+	double AreaEsfera();
+};
+
+
+//Esfera.cpp
+#include "Esfera.h"
+#include "math.h"
+
+Esfera::Esfera() {}
+
+float Esfera::get_radio() {
+	return radioEsfera;
+}
+
+void  Esfera::set_radio(float _radio) {
+	radioEsfera = _radio;
+}
+
+double Esfera::AreaEsfera() {
+	return 4 * 3.1415926 * radioEsfera * radioEsfera;
+}
+
+//Cilindro.h
+#pragma once
+
+class Cilindro {
+private:
+	float radioCilindro;
+	float alturaCilindro;
+public:
+	Cilindro();
+	void set_alturaCilindro(float _alturaCilindro);
+	void set_radioCilindro(float _radioCilindro);
+	float get_alturaCilindro();
+	float get_radioCilindro();
+	double calcularVolumenCilindro();
+};
+
+//Cilindro.cpp
+#include "Cilindro.h"
+
+Cilindro::Cilindro() {
+}
+
+void Cilindro::set_alturaCilindro(float _alturaCilindro) {
+	alturaCilindro = _alturaCilindro;
+}
+void Cilindro::set_radioCilindro(float _radioCilindro) {
+	radioCilindro = _radioCilindro;
+}
+float Cilindro::get_alturaCilindro() {
+	return alturaCilindro;
+}
+float Cilindro::get_radioCilindro() {
+	return radioCilindro;
+}
+double Cilindro::calcularVolumenCilindro() {
+	return 3.1416 * radioCilindro * radioCilindro * alturaCilindro;
+}
+
+//Paralelogramo.h
+#pragma once
+class Paralelogramo {
+private:
+	float basePa;
+	float alturaPa;
+
+public:
+	Paralelogramo();
+	void set_basePa(float _base);
+	void set_alturaPa(float _altura);
+	float get_basePa();
+	float get_alturaPa();
+	double areaPa();
+};
+
+//Paralelogramo.cpp
+#include "Paralelogramo.h"
+
+Paralelogramo::Paralelogramo() {
+}
+void Paralelogramo::set_basePa(float _base) {
+	basePa = _base;
+}
+void Paralelogramo::set_alturaPa(float _altura) {
+	alturaPa = _altura;
+}
+float Paralelogramo::get_basePa() {
+	return basePa;
+}
+float Paralelogramo::get_alturaPa() {
+	return alturaPa;
+}
+double Paralelogramo::areaPa() {
+	return (basePa * alturaPa);
+}
+
+//Cuadrado.h
+class Cuadrado {
+private:
+    float ladoCuadrado;
+public:
+    Cuadrado();
+    float get_ladoCuadrado();
+    void set_ladoCuadrado(float _ladoCuadrado);
+    double AreaCuadrado();
+};
+
+
+//Cuadrado.cpp
+#include "Cuadrado.h"
+Cuadrado::Cuadrado() {
+
+}
+float Cuadrado::get_ladoCuadrado() {
+    return ladoCuadrado;
+}
+
+
+void Cuadrado::set_ladoCuadrado(float _ladoCuadrado) {
+    ladoCuadrado = _ladoCuadrado;
+}
+double Cuadrado::AreaCuadrado() {
+    return ladoCuadrado * ladoCuadrado;
+}
