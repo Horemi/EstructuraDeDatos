@@ -1,3 +1,4 @@
+//main cpp
 #include <iostream>
 #include "Rectangulo.h"
 #include "Pala.h"
@@ -63,3 +64,112 @@ int main()
 				break;
 	}
 }
+
+//Recatngulo.h
+#pragma once
+class Rectangulo
+{
+private:
+	float base;
+	float altura;
+public:
+	Rectangulo();
+	void set_altura(float _altura);
+	void set_base(float _base);
+	float get_altura();
+	float get_base();
+	float area();
+};
+
+//Rectangulo.cpp
+#include "Rectangulo.h"
+
+Rectangulo::Rectangulo() {
+
+}
+
+void Rectangulo::set_altura(float _altura) {
+	altura = _altura;
+}
+void Rectangulo::set_base(float _base) {
+	base = _base;
+}
+float Rectangulo::get_altura() {
+	return altura;
+}
+float Rectangulo::get_base() {
+	return base;
+}
+float Rectangulo::area() {
+	return (altura * base);
+}
+
+//Pala.h
+#pragma once
+class Paralelogramo
+{
+private:
+	float base;
+	float altura;
+
+public:
+	Paralelogramo();
+	void set_altura(float _altura);
+	void set_base(float _base);
+	float get_altura();
+	float get_base();
+	float area();
+};
+
+//Pala.cpp
+#include "Pala.h"
+
+Paralelogramo::Paralelogramo() {
+
+}
+
+void Paralelogramo::set_altura(float _altura) {
+	altura = _altura;
+}
+void Paralelogramo::set_base(float _base) {
+	base = _base;
+}
+float Paralelogramo::get_altura() {
+	return altura;
+}
+float Paralelogramo::get_base() {
+	return base;
+}
+float Paralelogramo::area() {
+	return (base * altura);
+}
+
+//Caudrado.h
+#pragma once
+class Cuadrado
+{
+private:
+	float lado;
+public:
+	Cuadrado();
+	void set_lado(float _lado);
+	float get_lado();
+	float area();
+};
+
+//Cuadrado.cpp
+#include "Cuadrado.h"
+
+Cuadrado::Cuadrado() {
+
+}
+void Cuadrado::set_lado(float _lado) {
+	lado = _lado;
+}
+float Cuadrado::get_lado() {
+	return lado;
+}
+float Cuadrado::area() {
+	return (lado * lado);
+}
+
